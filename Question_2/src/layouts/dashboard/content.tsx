@@ -5,7 +5,15 @@ import { mergeClasses } from 'minimal-shared/utils';
 
 import Container from '@mui/material/Container';
 
-import { layoutClasses } from '../core/classes';
+// Layout classes
+const layoutClasses = {
+  root: 'layout__root',
+  header: 'layout__header',
+  sidebar: 'layout__sidebar',
+  sidebarContainer: 'layout__sidebar-container',
+  main: 'layout__main',
+  content: 'layout__content',
+};
 
 // ----------------------------------------------------------------------
 

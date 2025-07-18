@@ -10,9 +10,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Drawer, { drawerClasses } from '@mui/material/Drawer';
 
 import { usePathname } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
+import { RouterLink } from 'src/routes/components/router-link';
 
-import { Logo } from 'src/components/logo';
+import { Logo } from 'src/components/logo/logo';
 
 import type { NavItem } from '../nav-config-dashboard';
 

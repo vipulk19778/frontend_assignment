@@ -1,17 +1,12 @@
 import type { LinkProps } from '@mui/material/Link';
 
 import { useId } from 'react';
-import { mergeClasses } from 'minimal-shared/utils';
-
 import Link from '@mui/material/Link';
 import { styled, useTheme } from '@mui/material/styles';
 
-import { RouterLink } from 'src/routes/components';
+import { RouterLink } from 'src/routes/components/router-link';
 
-import { logoClasses } from './classes';
-
-// ----------------------------------------------------------------------
-
+// Simple Logo component for VE (Vineyard Explorer)
 export type LogoProps = LinkProps & {
   isSingle?: boolean;
   disabled?: boolean;
@@ -26,12 +21,11 @@ export function Logo({
   ...other
 }: LogoProps) {
   const theme = useTheme();
-
   const gradientId = useId();
 
-  const TEXT_PRIMARY = theme.vars.palette.text.primary;
-  const PRIMARY_MAIN = theme.vars.palette.primary.main;
-  const PRIMARY_DARKER = theme.vars.palette.primary.dark;
+  const TEXT_PRIMARY = theme.palette.text.primary;
+  const PRIMARY_MAIN = theme.palette.primary.main;
+  const PRIMARY_DARKER = theme.palette.primary.dark;
 
   const singleLogo = (
     <svg
@@ -123,7 +117,7 @@ export function Logo({
       href={href}
       aria-label="Logo"
       underline="none"
-      className={mergeClasses([logoClasses.root, className])}
+      className={className}
       sx={[
         {
           width: 40,
@@ -140,8 +134,7 @@ export function Logo({
   );
 }
 
-// ----------------------------------------------------------------------
-
+// Simple styled component for logo
 const LogoRoot = styled(Link)(() => ({
   flexShrink: 0,
   color: 'transparent',

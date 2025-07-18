@@ -1,10 +1,10 @@
-import { Box, Card, Container, Typography, CardContent } from '@mui/material';
+import { Box, Card, Typography, CardContent } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 
 export function ContactPage() {
   return (
-    <Container maxWidth="xl" disableGutters>
+    <Box>
       <Box>
         <Typography variant="h3" component="h1" gutterBottom>
           Contact Us
@@ -69,7 +69,7 @@ export function ContactPage() {
           </CardContent>
         </Card>
       </Box>
-    </Container>
+    </Box>
   );
 }
 
