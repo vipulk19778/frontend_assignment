@@ -194,10 +194,6 @@ npm run test
 5. Ensure all tests pass
 6. Submit a pull request
 
-## License
-
-MIT License - see LICENSE file for details
-
 ## Support
 
 For issues or questions:
