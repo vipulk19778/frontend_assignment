@@ -6,6 +6,11 @@ import { styled, useTheme } from '@mui/material/styles';
 
 import { RouterLink } from 'src/routes/components/router-link';
 
+// Logo classes
+const logoClasses = {
+  root: 've__logo__root',
+};
+
 // Simple Logo component for VE (Vineyard Explorer)
 export type LogoProps = LinkProps & {
   isSingle?: boolean;
@@ -23,9 +28,15 @@ export function Logo({
   const theme = useTheme();
   const gradientId = useId();
 
-  const TEXT_PRIMARY = theme.palette.text.primary;
-  const PRIMARY_MAIN = theme.palette.primary.main;
-  const PRIMARY_DARKER = theme.palette.primary.dark;
+  // Support both CSS variables (for tests) and regular theme values (for app)
+  const PRIMARY_MAIN = theme.vars?.palette?.primary?.main || 'var(--mui-palette-primary-main)';
+  const PRIMARY_DARKER = theme.vars?.palette?.primary?.dark || 'var(--mui-palette-primary-dark)';
+
+  // For text color in full logo, use primary color in dark mode for better visibility
+  const TEXT_COLOR =
+    theme.palette.mode === 'dark'
+      ? theme.vars?.palette?.primary?.light || theme.palette.primary.light
+      : theme.vars?.palette?.text?.primary || 'var(--mui-palette-text-primary)';
 
   const singleLogo = (
     <svg
@@ -104,7 +115,7 @@ export function Logo({
         fontSize="16"
         fontWeight="500"
         fontFamily="Arial, sans-serif"
-        fill={TEXT_PRIMARY}
+        fill={TEXT_COLOR}
       >
         Vineyard Explorer
       </text>
@@ -117,7 +128,7 @@ export function Logo({
       href={href}
       aria-label="Logo"
       underline="none"
-      className={className}
+      className={`${logoClasses.root} ${className || ''}`}
       sx={[
         {
           width: 40,
