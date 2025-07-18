@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Required Tests should render Logo component snapshot 1`] = `
+<a
+  aria-label="Logo"
+  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone ve__logo__root css-o10bd8-MuiTypography-root-MuiLink-root"
+  data-discover="true"
+  href="/"
+>
+  <svg
+    fill="none"
+    height="100%"
+    viewBox="0 0 80 80"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <lineargradient
+        gradientUnits="userSpaceOnUse"
+        id="«r0»-text"
+        x1="0%"
+        x2="100%"
+        y1="0%"
+        y2="100%"
+      >
+        <stop
+          stop-color="var(--mui-palette-primary-main)"
+        />
+        <stop
+          offset="1"
+          stop-color="var(--mui-palette-primary-dark)"
+        />
+      </lineargradient>
+    </defs>
+    <text
+      dominant-baseline="middle"
+      fill="url(#«r0»-text)"
+      font-family="Arial, sans-serif"
+      font-size="32"
+      font-weight="bold"
+      text-anchor="middle"
+      x="40"
+      y="50"
+    >
+      VE
+    </text>
+  </svg>
+</a>
+`;
