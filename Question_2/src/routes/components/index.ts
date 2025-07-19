@@ -1,3 +1,2 @@
-export * from './router-link';
-
-export * from './error-boundary';
+export { ErrorBoundary } from './error-boundary';
+export { RouterLink } from './router-link';

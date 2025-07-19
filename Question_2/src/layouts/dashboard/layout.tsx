@@ -6,10 +6,18 @@ import { useBoolean } from 'minimal-shared/hooks';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 
-import { ThemeSwitcher } from 'src/components/theme-switcher';
+import { ThemeSwitcher } from 'src/components/theme-switcher/theme-switcher';
 
 import { NavMobile, NavDesktop } from './nav';
-import { layoutClasses } from '../core/classes';
+// Layout classes
+const layoutClasses = {
+  root: 'layout__root',
+  header: 'layout__header',
+  sidebar: 'layout__sidebar',
+  sidebarContainer: 'layout__sidebar-container',
+  main: 'layout__main',
+  content: 'layout__content',
+};
 import { dashboardLayoutVars } from './css-vars';
 import { navData } from '../nav-config-dashboard';
 import { MainSection } from '../core/main-section';

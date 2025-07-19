@@ -1,15 +1,18 @@
 import type { Theme, SxProps, CSSObject } from '@mui/material/styles';
-
-import { mergeClasses } from 'minimal-shared/utils';
-
 import { styled } from '@mui/material/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
-import { layoutClasses } from './classes';
-import { layoutSectionVars } from './css-vars';
+// Layout classes
+const layoutClasses = {
+  root: 'layout__root',
+  header: 'layout__header',
+  sidebar: 'layout__sidebar',
+  sidebarContainer: 'layout__sidebar-container',
+  main: 'layout__main',
+  content: 'layout__content',
+};
 
-// ----------------------------------------------------------------------
-
+// Simple Layout Section component
 export type LayoutSectionProps = React.ComponentProps<'div'> & {
   sx?: SxProps<Theme>;
   cssVars?: CSSObject;
@@ -29,20 +32,15 @@ export function LayoutSection({
   className,
   ...other
 }: LayoutSectionProps) {
-  const inputGlobalStyles = (
-    <GlobalStyles styles={(theme) => ({ body: { ...layoutSectionVars(theme), ...cssVars } })} />
-  );
+  const inputGlobalStyles = cssVars ? (
+    <GlobalStyles styles={() => ({ body: { ...cssVars } })} />
+  ) : null;
 
   return (
     <>
       {inputGlobalStyles}
 
-      <LayoutRoot
-        id="root__layout"
-        className={mergeClasses([layoutClasses.root, className])}
-        sx={sx}
-        {...other}
-      >
+      <LayoutRoot id="root__layout" className={className} sx={sx} {...other}>
         {sidebarSection ? (
           <>
             {sidebarSection}
@@ -64,9 +62,12 @@ export function LayoutSection({
   );
 }
 
-// ----------------------------------------------------------------------
-
-const LayoutRoot = styled('div')``;
+// Simple styled components
+const LayoutRoot = styled('div')(() => ({
+  display: 'flex',
+  flex: '1 1 auto',
+  minHeight: '100vh',
+}));
 
 const LayoutSidebarContainer = styled('div')(() => ({
   display: 'flex',

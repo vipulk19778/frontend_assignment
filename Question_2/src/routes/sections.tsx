@@ -55,9 +55,5 @@ export const routesSection: RouteObject[] = [
       { path: 'contact', element: <ContactPage /> },
     ],
   },
-  {
-    path: '404',
-    element: <Page404 />,
-  },
   { path: '*', element: <Page404 /> },
 ];

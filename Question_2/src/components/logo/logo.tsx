@@ -1,17 +1,17 @@
 import type { LinkProps } from '@mui/material/Link';
 
 import { useId } from 'react';
-import { mergeClasses } from 'minimal-shared/utils';
-
 import Link from '@mui/material/Link';
 import { styled, useTheme } from '@mui/material/styles';
 
-import { RouterLink } from 'src/routes/components';
+import { RouterLink } from 'src/routes/components/router-link';
 
-import { logoClasses } from './classes';
+// Logo classes
+const logoClasses = {
+  root: 've__logo__root',
+};
 
-// ----------------------------------------------------------------------
-
+// Simple Logo component for VE (Vineyard Explorer)
 export type LogoProps = LinkProps & {
   isSingle?: boolean;
   disabled?: boolean;
@@ -26,12 +26,17 @@ export function Logo({
   ...other
 }: LogoProps) {
   const theme = useTheme();
-
   const gradientId = useId();
 
-  const TEXT_PRIMARY = theme.vars.palette.text.primary;
-  const PRIMARY_MAIN = theme.vars.palette.primary.main;
-  const PRIMARY_DARKER = theme.vars.palette.primary.dark;
+  // Support both CSS variables (for tests) and regular theme values (for app)
+  const PRIMARY_MAIN = theme.vars?.palette?.primary?.main || 'var(--mui-palette-primary-main)';
+  const PRIMARY_DARKER = theme.vars?.palette?.primary?.dark || 'var(--mui-palette-primary-dark)';
+
+  // For text color in full logo, use primary color in dark mode for better visibility
+  const TEXT_COLOR =
+    theme.palette.mode === 'dark'
+      ? theme.vars?.palette?.primary?.light || theme.palette.primary.light
+      : theme.vars?.palette?.text?.primary || 'var(--mui-palette-text-primary)';
 
   const singleLogo = (
     <svg
@@ -110,7 +115,7 @@ export function Logo({
         fontSize="16"
         fontWeight="500"
         fontFamily="Arial, sans-serif"
-        fill={TEXT_PRIMARY}
+        fill={TEXT_COLOR}
       >
         Vineyard Explorer
       </text>
@@ -123,7 +128,7 @@ export function Logo({
       href={href}
       aria-label="Logo"
       underline="none"
-      className={mergeClasses([logoClasses.root, className])}
+      className={`${logoClasses.root} ${className || ''}`}
       sx={[
         {
           width: 40,
@@ -140,8 +145,7 @@ export function Logo({
   );
 }
 
-// ----------------------------------------------------------------------
-
+// Simple styled component for logo
 const LogoRoot = styled(Link)(() => ({
   flexShrink: 0,
   color: 'transparent',

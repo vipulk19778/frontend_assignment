@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 import { Iconify } from '../components/iconify';
 import { TreeViewer } from '../components/tree-viewer';
@@ -15,7 +15,7 @@ export function BlocksPage() {
   };
 
   return (
-    <Container maxWidth="xl" disableGutters>
+    <Box>
       <Box
         sx={{
           display: 'flex',
@@ -54,7 +54,7 @@ export function BlocksPage() {
       </Box>
 
       <TreeViewer data={blockTree} type="blocks" />
-    </Container>
+    </Box>
   );
 }
 

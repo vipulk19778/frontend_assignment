@@ -1,8 +1,8 @@
-import { Card, Container, Typography, CardContent } from '@mui/material';
+import { Box, Card, Typography, CardContent } from '@mui/material';
 
 export function AboutPage() {
   return (
-    <Container maxWidth="xl" disableGutters>
+    <Box>
       <Typography variant="h3" component="h1" gutterBottom>
         About Vineyard Management System
       </Typography>
@@ -46,7 +46,7 @@ export function AboutPage() {
           </Typography>
         </CardContent>
       </Card>
-    </Container>
+    </Box>
   );
 }
 
